@@ -4,5 +4,23 @@
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
     "sqlite3": "^5.0.2"
-  }
+  },
+  "name": "cineone-backend",
+  "version": "1.0.0",
+  "description": "back-end to be used in a front-end web page",
+  "main": "./src/server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaissilvr/CINEONE-BACKEND.git"
+  },
+  "author": "Thais Silveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaissilvr/CINEONE-BACKEND/issues"
+  },
+  "homepage": "https://github.com/thaissilvr/CINEONE-BACKEND#readme"
 }
