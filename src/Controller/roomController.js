@@ -29,7 +29,7 @@ const room = (app, bd) => {
     app.post('/room', async (req,res) => {
         try {
         const body = req.body
-        const addRoom = new Room(body.time, body.type, body.max_capacity)
+        const addRoom = new Room(body.time, body.type, body.max_capacity, body.id_movie)
         const add = await testROOM.insert(addRoom)
         res.json(add)     
         
@@ -40,33 +40,6 @@ const room = (app, bd) => {
         })
     }
     })
-
-    app.delete(('/room/:id'), async (req, res) => {
-        const id = parseInt(req.params.id)
-
-        try {
-            const dlt = await testROOM.deleteById(id)
-            res.json(dlt)
-        } catch (error) {
-            res.status(400).json(error)
-        }
-
-    })
-
-    app.put(('/room/:id'), async (req, res) => {
-       const id = req.params.id
-       const body = req.body
-
-       try {
-           const upd = await testROOM.alterById(id, body)
-           res.json(upd)
-           
-       } catch (error) {
-        res.status(400).json(error)
-       }
-
-    })
-
 
 }
 

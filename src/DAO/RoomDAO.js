@@ -33,9 +33,9 @@ class RoomDAO {
 
     insert(addRoom) {
         return new Promise ((res, rej) => {
-            const sql = `INSERT INTO Room (time, type, max_capacity) VALUES (?, ?, ?)`
+            const sql = `INSERT INTO Room (time, type, max_capacity, id_movie) VALUES (?, ?, ?, ?)`
         
-            this.db.run(sql, [addRoom.time, addRoom.type, addRoom.max_capacity], function (error) {
+            this.db.run(sql, [addRoom.time, addRoom.type, addRoom.max_capacity, addRoom.id_movie], function (error) {
                 if(error){
                     rej({
                         "msg" : error.message,
@@ -48,46 +48,6 @@ class RoomDAO {
             
         )}
     )}
-
-
-    deleteById(id) {  
-        return new Promise ((res, rej)=>{
-            const sql = `DELETE FROM Room WHERE id = ?`
-            this.db.run(sql, id, (error) =>{
-                if (error) {
-                    rej({
-                        "msg" : error.message,
-                        "error": true
-                    })
-             } else {
-                res({
-                    "msg": "Id deleted successfully",
-                    "error" : false
-                })
-             }
-            })
-        })
-    }
-
-    alterById(id, body) {
-        return new Promise ((res, rej)=>{
-            const sql = `UPDATE Room SET
-            time = ?, type = ?, max_capacity = ? WHERE id = ?`
-            this.db.run(sql, [body.time, body.type, body.max_capacity, id], (error) =>{
-                if (error) {
-                    rej({
-                        "msg" : error.message,
-                        "error": true
-                    })
-             } else {
-                res({
-                    "msg": "ID updated successfully",
-                    "error" : false
-                })
-             }
-            })
-        })
-    }
 
 }
           
