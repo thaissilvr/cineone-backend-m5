@@ -7,6 +7,9 @@
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.6"
   },
+  "engines": {
+    "node": "16.*"
+  },
   "name": "cineone-backend",
   "version": "1.0.0",
   "description": "back-end to be used in a front-end web page",
