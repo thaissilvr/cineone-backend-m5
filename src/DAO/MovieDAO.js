@@ -18,7 +18,7 @@ class MovieDAO {
 
     listId(id) {
         return new Promise ((res, rej) => {
-         const sqlMovie = `SELECT * FROM Movie WHERE id = ?`
+         const sqlMovie = `SELECT * FROM Movie WHERE id_movie = ?`
          this.db.all(sqlMovie, id, (error, rows) => {
             if(error) {
                 rej(error.message)

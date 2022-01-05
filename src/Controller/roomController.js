@@ -15,7 +15,7 @@ const room = (app, bd) => {
 
     app.get('/room/:id', async (req, res) => {
         const id = req.params.id
-        
+
         try {
             const r = await testROOM.listId(id)
             res.json(r)

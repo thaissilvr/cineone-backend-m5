@@ -18,7 +18,7 @@ class RoomDAO {
 
     listId(id) {
         return new Promise ((res, rej) => {
-         const sqlRoom = `SELECT * FROM Room WHERE id = ?`
+         const sqlRoom = `SELECT * FROM Room WHERE id_room = ?`
          this.db.all(sqlRoom, id, (error, rows) => {
             if(error) {
                 rej(error.message)
