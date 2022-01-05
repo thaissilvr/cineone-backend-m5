@@ -18,8 +18,4 @@ app.use(cors())
 roomController(app, bd)
 movieController(app, bd)
 
-
-
-
-
 module.exports = app
