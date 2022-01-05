@@ -1,22 +1,25 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const caminhoArq = path.resolve(__dirname,'database.db')
+const caminhoArq = path.resolve(__dirname,'newdatabase.db')
 
 const bd = new sqlite3.Database(caminhoArq);
 //creating table
-const createTableRoom = `CREATE TABLE IF NOT EXISTS Room
+
+const createTableMovie = `CREATE TABLE IF NOT EXISTS Movie
 (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "time" varchar(5) NOT NULL,
-    "type" varchar(2) NOT NULL,
-    "max_capacity" tinyint(40) NOT NULL
+    "id_movie" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" varchar (255) NOT NULL,
+    "rating" varchar (255) NOT NULL,
+    "genre" varchar(255) NOT NULL,
+    "movie_length" varchar(10) NOT NULL,
+    "synopsis" varchar(255) NOT NULL
   );`
 
-  bd.run(createTableRoom, (error) => {
+  bd.run(createTableMovie, (error) => {
     if(error) {
         console.log("Try again", error.message)
     } else {
-        console.log("The table has been created successfully.")
+        console.log("The table MOVIE has been created successfully.")
     }
   })
 
@@ -27,5 +30,29 @@ process.on('SIGINT', () =>
     })
 );
 
+const createTableRoom = `CREATE TABLE IF NOT EXISTS Room
+(
+    "id_room" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time" varchar(5) NOT NULL,
+    "type" varchar(2) NOT NULL,
+    "max_capacity" tinyint(40) NOT NULL,
+    "id_movie" INTERGER NOT NULL,
+         FOREIGN KEY (id_movie) REFERENCES Movie (id_movie)
+  );`
+
+  bd.run(createTableRoom, (error) => {
+    if(error) {
+        console.log("Try again", error.message)
+    } else {
+        console.log("The table ROOM has been created successfully.")
+    }
+  })
+
+process.on('SIGINT', () =>
+    bd.close(() => {
+        console.log('BD encerrado!');
+        process.exit(0);
+    })
+);
 
 module.exports = bd;
