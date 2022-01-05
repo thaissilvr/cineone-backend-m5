@@ -5,7 +5,7 @@ const app = express();
 
 
 //CONTROLLER
-
+const movieController = require('./Controller/movieController')
 const roomController = require('./Controller/roomController')
 const bd = require('./Infrastructure/sqlitedb')
 
@@ -16,6 +16,7 @@ app.use(cors())
 
 //ROOT
 roomController(app, bd)
+movieController(app, bd)
 
 
 
