@@ -29,7 +29,7 @@ const movie = (app, bd) => {
      app.post('/movie', async (req,res) => {
          try {
          const body = req.body
-         const addMovie = new Movie(body.name, body.rating, body.genre, body.movie_length, body.synopsis)
+         const addMovie = new Movie(body.name, body.rating, body.genre, body.movie_length, body.synopsis, body.urlImg)
          const add = await testMOVIE.insert(addMovie)
 
          res.json(add)     

@@ -33,9 +33,9 @@ class MovieDAO {
 
     insert(addMovie) {
         return new Promise ((res, rej) => {
-            const sql = `INSERT INTO Movie (name, rating,  genre, movie_length, synopsis) VALUES (?, ?, ?, ?, ?)`
+            const sql = `INSERT INTO Movie (name, rating,  genre, movie_length, synopsis, urlImg) VALUES (?, ?, ?, ?, ?, ?)`
         
-            this.db.run(sql, [addMovie.name,  addMovie.rating,  addMovie.genre, addMovie.movie_length, addMovie.synopsis], function (error) {
+            this.db.run(sql, [addMovie.name,  addMovie.rating,  addMovie.genre, addMovie.movie_length, addMovie.synopsis, addMovie.urlImg], function (error) {
                 if(error){
                     rej({
                         "msg" : error.message,

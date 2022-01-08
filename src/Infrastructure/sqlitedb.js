@@ -12,7 +12,8 @@ const createTableMovie = `CREATE TABLE IF NOT EXISTS Movie
     "rating" varchar (255) NOT NULL,
     "genre" varchar(255) NOT NULL,
     "movie_length" varchar(10) NOT NULL,
-    "synopsis" varchar(255) NOT NULL
+    "synopsis" varchar(255) NOT NULL,
+    "urlImg" varchar(255) NOT NULL
   );`
 
   bd.run(createTableMovie, (error) => {
