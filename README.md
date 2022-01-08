@@ -36,7 +36,9 @@ npm run dev
 API REST, utilizando somente os verbos HTTP Get e Post.
 ~~~
 GET: /room
+GET: /room/id
 GET: /movie
+GET: /movie/id
 POST: /room
 POST: /movie
 ~~~
